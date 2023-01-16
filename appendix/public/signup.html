@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>アカウント作成</title>
+    <link rel="stylesheet" href="./signup.css" />
+  </head>
+  <body>
+    <form id="signup" action="/signup" method="POST">
+      <fieldset>
+        <legend class="form-caption">アカウント作成</legend>
+        <div>
+          <label for="username">メールアドレス</label>
+          <input id="username" type="email" name="username" class="signup-input" required autocomplete="email"/>
+        </div>
+        <div>
+          <label for="password">パスワード</label>
+          <input id="password" type="password" name="password" class="signup-input" required 
+          pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
+          title="パスワードには8文字以上の英数字を入力してください"
+          autocomplete="new-password" />
+        </div>
+        <div class="signup-item">
+          <input type="checkbox" id="display-password" />
+          <label for="display-password">パスワードを表示する</label>
+        </div>
+        <p><small>パスワードには8文字以上の英数字を入力してください</small></p>
+        <button id="submit" type="submit">アカウント作成</button>
+      </fieldset>
+    </form>
+
+    <script>
+      const btn = document.querySelector("#submit");
+      const password = document.querySelector("#password");
+      btn.addEventListener("click", () => {
+        if (!/^[A-Za-z\d]{8,}$/.test(password.value)) {
+          password.setCustomValidity("8文字以上の英数字を入力してください");
+        } else if (!/(?=.*[A-Za-z])(?=.*\d)/.test(password.value)) {
+          password.setCustomValidity("英数字を少なくとも1文字ずつ入力してください");
+        } else {
+          password.setCustomValidity("");
+        }
+      });
+
+      const checkbox = document.querySelector("#display-password");
+      checkbox.addEventListener("change", () => {
+        if (checkbox.checked === true) {
+          // チェックボックスがONの場合、typeをtextへ変更
+          password.type = "text";
+        } else {
+          // チェックボックスがOFFの場合、typeをpasswordへ戻す
+          password.type = "password";
+        }
+      })
+    </script>
+  </body>
+</html>

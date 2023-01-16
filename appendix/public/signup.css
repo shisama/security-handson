@@ -1,0 +1,19 @@
+#signup {
+  display: flex;
+  justify-content: center;
+}
+
+#signup legend {
+  text-align: center;
+}
+
+.signup-input,
+#submit {
+  display: block;
+  margin: 5px 0;
+  width: 100%;
+}
+
+.signup-input:invalid {
+  background-color: #FFD9D9;
+}

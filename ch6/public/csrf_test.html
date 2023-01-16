@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CSRF検証ページ</title>
+  </head>
+  <body>
+    <form id="remit" action="/csrf/remit" method="post">
+      <div>
+        <label for="to">送金先</label>
+        <input type="text" name="to" id="to" required />
+      </div>
+      <div>
+        <label for="amount">金額</label>
+        <input type="text" name="amount" id="amount" required />
+      </div>
+      <div>
+        <button type="submit">送金</button>
+      </div>
+    </form>
+    <script>
+      // Cookieからトークンを取得
+      const token = document.cookie
+                      .split("; ")
+                      .find(row => row.startsWith("csrf_token="))
+                      .split("=")[1];
+
+      // フォームにトークンを持つ非表示な<input>要素を追加
+      const el = document.createElement("input");
+      el.type = "hidden";
+      el.name = "csrf_token";
+      el.value = token;
+      document.getElementById("remit").appendChild(el);
+    </script>
+  </body>
+</html>

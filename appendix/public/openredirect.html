@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>オープンリダイレクト検証ページ</title>
+  </head>
+  <body>
+    <h1>オープンリダイレクト検証ページ</h1>
+    <script>
+      const url = new URL(location.href);
+      const redirectUrl = url.searchParams.get("url");
+      if (redirectUrl) {
+        // クエリ文字列urlのオリジンを取得するため一度URLオブジェクトにする
+        const redirectUrlObj = new URL(redirectUrl);
+        if (
+          redirectUrlObj.origin === location.origin ||
+          confirm(
+            `${redirectUrl}へリダイレクトしようとしています。よろしいでしょうか？`
+          )
+        ) {
+          location.href = redirectUrl;
+        }
+      }
+    </script>
+  </body>
+</html>
