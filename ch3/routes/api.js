@@ -11,7 +11,7 @@ router.get("/", (req, res) => {
     if (lang === "en") {
       message = "message is empty.";
     } else {
-      message = "messageの値が空です。"
+      message = "messageの値が空です。";
     }
   }
   res.send({ message });
