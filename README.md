@@ -5,7 +5,7 @@
 
 ## 動作確認済環境
 
-- Windows 10 / macOS 12~13
+- Windows 10 / macOS 12~14
 - Node.js 18.12.1
 
 # License
